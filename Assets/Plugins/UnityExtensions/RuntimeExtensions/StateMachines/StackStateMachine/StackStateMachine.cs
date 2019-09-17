@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace UnityExtensions
 {
     /// <summary>
     /// 栈状态机, 可作为一般状态机或子状态机使用
+    /// Stack state machine, can be used as a general state machine or substate machine
     /// </summary>
     public class StackStateMachine<T> : IStackState where T : class, IStackState
     {
@@ -14,6 +15,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 栈中状态的总数
+        /// The total number of states in the stack
         /// </summary>
         public int stateCount
         {
@@ -23,6 +25,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 当前状态持续时间
+        /// Current state duration
         /// </summary>
         public float currentStateTime
         {
@@ -32,6 +35,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 当前状态持续时间
+        /// Current state duration
         /// </summary>
         public double currentStateTimeDouble
         {
@@ -41,6 +45,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 当前状态 (如果 stateCount 为 0 会抛出异常)
+        /// Current state (if stateCount is 0, an exception will be thrown)
         /// </summary>
         public T currentState
         {
@@ -50,6 +55,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 下方状态 (如果 stateCount 小于 2 会抛出异常)
+        /// Lower state (if stateCount is less than 2, an exception will be thrown)
         /// </summary>
         public T underState
         {
@@ -59,6 +65,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 获取栈中的状态
+        /// Get the status in the stack
         /// </summary>
         public T GetState(int index)
         {
@@ -73,6 +80,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 将新状态入栈
+        /// Push the new state onto the stack
         /// </summary>
         public void PushState(T newState)
         {
@@ -101,6 +109,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 将当前状态出栈 (如果 stateCount 为 0 会抛出异常)
+        /// Popping the current state (if the stateCount is 0, an exception will be thrown)
         /// </summary>
         public void PopState()
         {
@@ -131,6 +140,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 将指定数量的状态出栈
+        /// Pop the specified number of states
         /// </summary>
         public void PopStates(int count)
         {
@@ -144,6 +154,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 将所有状态出栈
+        /// Pop all states
         /// </summary>
         public void PopAllStates()
         {
@@ -163,6 +174,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 作为子状态机使用时需要实现此方法
+        /// This method needs to be implemented when used as a child state machine
         /// </summary>
         public virtual void OnEnter(StackAction stackAction)
         {
@@ -171,6 +183,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 作为子状态机使用时需要实现此方法
+        /// This method needs to be implemented when used as a child state machine
         /// </summary>
         public virtual void OnExit(StackAction stackAction)
         {
@@ -180,6 +193,8 @@ namespace UnityExtensions
         /// <summary>
         /// 更新当前状态
         /// 注意: 顶层状态机需要主动调用
+        /// Update current status
+        /// Note: The top state machine needs to be called actively
         /// </summary>
         public virtual void OnUpdate(float deltaTime)
         {

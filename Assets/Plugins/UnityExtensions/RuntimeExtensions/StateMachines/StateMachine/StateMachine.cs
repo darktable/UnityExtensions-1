@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 
 namespace UnityExtensions
 {
     /// <summary>
     /// 状态机, 可作为一般状态机或子状态机使用
+    /// State machine, can be used as a general state machine or substate machine
     /// </summary>
     public class StateMachine<T> : IState where T : class, IState
     {
@@ -13,6 +14,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 当前状态持续时间
+        /// Current state duration
         /// </summary>
         public float currentStateTime
         {
@@ -22,6 +24,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 当前状态持续时间
+        /// Current state duration
         /// </summary>
         public double currentStateTimeDouble
         {
@@ -36,6 +39,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 当前状态
+        /// Current state
         /// </summary>
         public T currentState
         {
@@ -69,6 +73,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 状态变化后触发
+        /// Trigger after state change
         /// </summary>
         protected virtual void OnStateChanged(T lastState, T currentState)
         {
@@ -77,12 +82,14 @@ namespace UnityExtensions
 
         /// <summary>
         /// 作为子状态机使用时需要实现此方法
+        /// This method needs to be implemented when used as a child state machine
         /// </summary>
         public virtual void OnEnter() { }
 
 
         /// <summary>
         /// 作为子状态机使用时需要实现此方法
+        /// This method needs to be implemented when used as a child state machine
         /// </summary>
         public virtual void OnExit() { }
 
@@ -90,6 +97,8 @@ namespace UnityExtensions
         /// <summary>
         /// 更新当前状态
         /// 注意: 顶层状态机需要主动调用
+        /// Update current status
+        /// Note: The top state machine needs to be called actively
         /// </summary>
         public virtual void OnUpdate(float deltaTime)
         {

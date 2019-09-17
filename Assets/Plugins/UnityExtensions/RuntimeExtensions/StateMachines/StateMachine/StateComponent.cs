@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +6,7 @@ namespace UnityExtensions
 {
     /// <summary>
     /// 状态组件基类
+    /// State component base class
     /// </summary>
     public abstract class BaseStateComponent : ScriptableComponent, IState
     {
@@ -17,6 +18,7 @@ namespace UnityExtensions
 
     /// <summary>
     /// 状态组件. 状态的 Enter 和 Exit 事件可序列化
+    /// State component. The Enter and Exit events of the state can be serialized
     /// </summary>
     [AddComponentMenu("Unity Extensions/State Machines/State")]
     [DisallowMultipleComponent]
@@ -31,12 +33,14 @@ namespace UnityExtensions
 
         /// <summary>
         /// 添加或移除更新状态触发的事件
+        /// Add or remove events triggered by update status
         /// </summary>
         public event Action<float> onUpdate;
 
 
         /// <summary>
         /// 添加或移除进入状态触发的事件
+        /// Add or remove events that are triggered by the incoming state
         /// </summary>
         public event UnityAction onEnter
         {
@@ -51,6 +55,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 添加或移除离开状态触发的事件
+        /// Add or remove events triggered by leaving status
         /// </summary>
         public event UnityAction onExit
         {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +6,7 @@ namespace UnityExtensions
 {
     /// <summary>
     /// 栈状态基类
+    /// Stack state base class
     /// </summary>
     public abstract class BaseStackState : IStackState
     {
@@ -23,6 +24,7 @@ namespace UnityExtensions
 
     /// <summary>
     /// 可序列化栈状态. 状态的 Enter 和 Exit 事件可序列化
+    /// Serializable stack state. The Enter and Exit events of the state can be serialized
     /// </summary>
     [Serializable]
     public class StackState : BaseStackState
@@ -36,12 +38,14 @@ namespace UnityExtensions
 
         /// <summary>
         /// 添加或移除更新状态触发的事件
+        /// Add or remove events triggered by update status
         /// </summary>
         public event Action<float> onUpdate;
 
 
         /// <summary>
         /// 添加或移除进入状态触发的事件
+        /// Add or remove events that are triggered by the incoming state
         /// </summary>
         public event UnityAction<StackAction> onEnter
         {
@@ -56,6 +60,7 @@ namespace UnityExtensions
 
         /// <summary>
         /// 添加或移除离开状态触发的事件
+        /// Add or remove events triggered by leaving status
         /// </summary>
         public event UnityAction<StackAction> onExit
         {
